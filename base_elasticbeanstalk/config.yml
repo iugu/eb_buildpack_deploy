@@ -1,4 +1,2 @@
 global:
-  profile: iugu-core-services-/AdministratorAccessRole
-  default_region: sa-east-1
   application_name: <APP_NAME>
