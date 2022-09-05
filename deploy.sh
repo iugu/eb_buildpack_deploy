@@ -30,10 +30,10 @@ echo pwd
 find .
 cp ./optional_extensions/ruby.config ./dist/.ebextensions/ruby.config
 jq --arg image $CONTAINER_IMAGE:$REVISION --arg port "Port" '.Image.Name=$image | .Ports[].ContainerPort="9292"' Dockerrun.template > dist/Dockerrun.aws.json
-sed -i '' "s/<APP_NAME>/${EB_APP}/" ./dist/.elasticbeanstalk/config.yml
-sed -i '' "s/<GITHUB_TOKEN>/$GITHUB_TOKEN/" ./dist/.ebextensions/github.config
-sed -i '' "s/<GITHUB_USER>/$GITHUB_USER/" ./dist/.ebextensions/github.config
-sed -i '' "s/<RAILS_MASTER_KEY>/$RAILS_MASTER_KEY/" ./dist/.ebextensions/ruby.config
+sed -i'' "s/<APP_NAME>/${EB_APP}/" ./dist/.elasticbeanstalk/config.yml
+sed -i'' "s/<GITHUB_TOKEN>/$GITHUB_TOKEN/" ./dist/.ebextensions/github.config
+sed -i'' "s/<GITHUB_USER>/$GITHUB_USER/" ./dist/.ebextensions/github.config
+sed -i'' "s/<RAILS_MASTER_KEY>/$RAILS_MASTER_KEY/" ./dist/.ebextensions/ruby.config
 
 cd dist && eb deploy -r $EB_REGION $EB_ENV --label $REVISION --message "$REVISION_MSG"
 end=$(date +%s)
