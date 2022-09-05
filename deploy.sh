@@ -26,6 +26,8 @@ cp -rf ./base_extensions ./dist/.ebextensions
 # Detect DataDog
 # Detect Ruby ...
 
+echo pwd
+find .
 cp ./optional_extensions/ruby.config ./dist/.ebextensions/ruby.config
 jq --arg image $CONTAINER_IMAGE:$REVISION --arg port "Port" '.Image.Name=$image | .Ports[].ContainerPort="9292"' Dockerrun.template > dist/Dockerrun.aws.json
 sed -i '' "s/<APP_NAME>/${EB_APP}/" ./dist/.elasticbeanstalk/config.yml
