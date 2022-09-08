@@ -5,6 +5,7 @@
   },
   "Ports": [
     {"ContainerPort": ""}
-  ]
+  ],
+  "Entrypoint": ""
 }
 
