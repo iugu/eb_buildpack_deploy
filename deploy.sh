@@ -44,13 +44,13 @@ fi
 
 cat dist/Dockerrun.aws.json
 
-sed -i '' "s/<APP_NAME>/${EB_APP}/" ./dist/.elasticbeanstalk/config.yml
-sed -i '' "s/<GITHUB_TOKEN>/$GITHUB_TOKEN/" ./dist/.ebextensions/github.config
-sed -i '' "s/<GITHUB_USER>/$GITHUB_USER/" ./dist/.ebextensions/github.config
-sed -i '' "s/<RAILS_MASTER_KEY>/$RAILS_MASTER_KEY/" ./dist/.ebextensions/ruby.config
-sed -i '' "s/REPLACED_ENV_TYPE/${RAILS_ENV}/" ./dist/.ebextensions/00env.config
-sed -i '' "s/REPLACED_VERSION_NAME/$REVISION/" ./dist/.ebextensions/00env.config
-sed -i '' "s/REPLACED_APP_NAME/${EB_APP}/" ./dist/.ebextensions/00env.config
+sed -i'' "s/<APP_NAME>/${EB_APP}/" ./dist/.elasticbeanstalk/config.yml
+sed -i'' "s/<GITHUB_TOKEN>/$GITHUB_TOKEN/" ./dist/.ebextensions/github.config
+sed -i'' "s/<GITHUB_USER>/$GITHUB_USER/" ./dist/.ebextensions/github.config
+sed -i'' "s/<RAILS_MASTER_KEY>/$RAILS_MASTER_KEY/" ./dist/.ebextensions/ruby.config
+sed -i'' "s/REPLACED_ENV_TYPE/${RAILS_ENV}/" ./dist/.ebextensions/00env.config
+sed -i'' "s/REPLACED_VERSION_NAME/$REVISION/" ./dist/.ebextensions/00env.config
+sed -i'' "s/REPLACED_APP_NAME/${EB_APP}/" ./dist/.ebextensions/00env.config
 
 cd dist && eb deploy -r $EB_REGION $EB_ENV --label $REVISION-${ENTRYPOINT} --message "$REVISION_MSG"
 end=$(date +%s)
